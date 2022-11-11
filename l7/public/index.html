@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
+  <!--  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=3fd8e0d68e9483b49994b6ff8fcb1d20"></script>-->
   <!--
     manifest.json provides metadata used when your web app is added to the
     homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -19,13 +20,16 @@
     work correctly both with client-side routing and a non-root public URL.
     Learn how to configure a non-root public URL by running `npm run build`.
   -->
-  <title>React App</title>
-  
+  <title>地铁站点</title>
+
 </head>
 <body>
-  <style>
+<style>
   body {
     margin: 0;
+  }
+  #top {
+    z-index: 999;
   }
   #map {
     width: 100%;
@@ -33,17 +37,45 @@
     position: absolute;
   }
 </style>
+
 <div id="map" />
 
-  <!--
-    This HTML file is a template.
-    If you open it directly in the browser, you will see an empty page.
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
 
-    You can add webfonts, meta tags, or analytics to this file.
-    The build step will place the bundled scripts into the <body> tag.
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
 
-    To begin the development, run `npm start` or `yarn start`.
-    To create a production bundle, use `npm run build` or `yarn build`.
-  -->
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
 </body>
 </html>
+
+<script type="text/javascript">
+  function change(){
+    var index = getCookie("index");
+    if(index == null){
+      setCookie("index", 1);
+    }else{
+     setCookie("index", Number(index) + Number(1));
+    }
+    window.location.reload();
+}
+
+ function setCookie(name,value){
+   var exp = new Date();
+   exp.setTime(exp.getTime() + 24*60*60*1000);
+   document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+ }
+
+ function getCookie(name){
+   var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+   if(arr != null){
+  	 return unescape(arr[2]);
+   }else{
+  	 return null;
+   }
+ }
+</script>
