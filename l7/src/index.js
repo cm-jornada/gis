@@ -48,11 +48,6 @@ scene.on('loaded', () => {
     });
     pointLayer.on('unclick', () => {
       plane.style.right = '-120px';
-      scene.setCenter([ 140.067171, 36.26186 ], {
-        padding: {
-          right: 0
-        }
-      });
     });
   }else{
     const tool = initTool("站点图");
